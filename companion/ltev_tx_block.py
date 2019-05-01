@@ -23,6 +23,7 @@ from gnuradio import gr
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from optparse import OptionParser
+import ltev
 import sys
 from gnuradio import qtgui
 
@@ -62,22 +63,23 @@ class ltev_tx_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+        self.ltev_tx_0 = Template error: ltev.tx($in)
+            cannot find 'in'
         self.blocks_vector_source_x_0 = blocks.vector_source_b(list(ord(i) for i in '...Communication Lab UAntwerpen...'), True, 1, [])
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
         self.blocks_packed_to_unpacked_xx_0 = blocks.packed_to_unpacked_bb(2, gr.GR_LSB_FIRST)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, '../tmp/test', False)
         self.blocks_file_sink_0.set_unbuffered(False)
-        self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
 
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.blocks_char_to_float_0, 0), (self.blocks_file_sink_0, 0))
         self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.blocks_throttle_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.blocks_char_to_float_0, 0))
+        self.connect((self.blocks_throttle_0, 0), (self.ltev_tx_0, 0))
         self.connect((self.blocks_vector_source_x_0, 0), (self.blocks_packed_to_unpacked_xx_0, 0))
+        self.connect((self.ltev_tx_0, 0), (self.blocks_file_sink_0, 0))
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "ltev_tx_block")
