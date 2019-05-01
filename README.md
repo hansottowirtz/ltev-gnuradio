@@ -3,7 +3,7 @@
 ### Compiling modules
 
 ```bash
-cd grc/gr-ltev
+cd modules/gr-ltev
 cmake ../
 make
 sudo make install
