@@ -1,5 +1,7 @@
 /tmp
-/modules/gr-ltev/docs
+/modules/gr-ltev/docs/doxygen/html
+/modules/gr-ltev/docs/doxygen/xml
+/modules/gr-ltev/docs/doxygen/doxyxml/generated
 
 CMakeLists.txt.user
 CMakeCache.txt
