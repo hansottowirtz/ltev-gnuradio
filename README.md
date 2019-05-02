@@ -4,7 +4,7 @@
 
 ```bash
 cd modules/gr-ltev
-cmake ../
+cmake .
 make
 sudo make install
 sudo ldconfig
